@@ -8,4 +8,5 @@ def test() -> None:
     print(get_files_info("calculator", "main.py"))
 
 
-test()
+if __name__ == "__main__":
+    test()
