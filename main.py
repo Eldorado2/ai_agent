@@ -25,18 +25,21 @@ def main() -> None:
     messages: list[ChatCompletionUserMessageParam] = [
         {"role": "user", "content": args.user_prompt},
     ]
-    generate_content(client, messages, args)
+
+    if args.verbose:
+        print(f"User prompt: {args.user_prompt}\n")
+
+    generate_content(client, messages, args.verbose)
 
 
-def generate_content(client: OpenAI, messages: list, args: argparse.Namespace) -> None:
+def generate_content(client: OpenAI, messages: list, verbose: bool) -> None:
     response = client.chat.completions.create(
         model="openrouter/free",
         messages=messages,
     )
 
-    if args.verbose:
+    if verbose:
         if response.usage:
-            print(f"User prompt: {args.user_prompt}" )
             print(f"Prompt tokens: {response.usage.prompt_tokens}")
             print(f"Response tokens: {response.usage.completion_tokens}")
         else:
