@@ -24,7 +24,10 @@ def main() -> None:
     messages: list[ChatCompletionUserMessageParam] = [
         {"role": "user", "content": args.user_prompt},
     ]
+    generate_content(client, messages)
 
+
+def generate_content(client: OpenAI, messages: list) -> None:
     response = client.chat.completions.create(
         model="openrouter/free",
         messages=messages,
