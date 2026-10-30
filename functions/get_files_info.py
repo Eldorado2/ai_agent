@@ -25,4 +25,4 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
 
     if not valid_dir:
         return f'Error: "{directory}" is not a directory'
-    return f'Success: "{directory}" is within the working directory'
+    return str(os.listdir(working_directory))
