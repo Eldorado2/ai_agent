@@ -25,4 +25,7 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
 
     if not valid_dir:
         return f'Error: "{directory}" is not a directory'
+
+    directory_list = os.listdir(f"{working_directory}\\{directory}")
+
     return str(os.listdir(working_directory))
